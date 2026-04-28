@@ -106,6 +106,13 @@ Docs:
 - `docs/idor-book-review-plan.md`
 - `docs/idor-lab-runbook.md`
 
+Docker/dev infra:
+- `docker-compose.yml`
+- `docker/php/Dockerfile`
+- `docker/nginx/default.conf`
+- `.env.docker.example`
+- `Makefile`
+
 ## 6) Route summary
 Public:
 - `GET /books`

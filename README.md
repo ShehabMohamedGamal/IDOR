@@ -56,3 +56,20 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Project Quickstart (Docker)
+
+This repo includes a Docker Compose setup for local development and IDOR lab runs.
+
+```bash
+cp .env.docker.example .env
+docker compose up -d --build
+docker compose exec app composer install
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --seed
+```
+
+App URL: `http://localhost:8080`  
+Vite HMR: `http://localhost:5173`
+
+Helper targets are available in `Makefile` (`make up`, `make down`, `make logs`, `make shell`, `make test`).

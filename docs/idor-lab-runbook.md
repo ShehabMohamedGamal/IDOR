@@ -6,6 +6,43 @@
   - Preferred for this repo: `pdo_sqlite` + `sqlite3`
   - Or configure MySQL in `.env`
 - Node dependencies installed (`npm install`)
+- Docker + Docker Compose plugin (for containerized setup)
+
+## Docker setup (recommended for this lab)
+1. Copy Docker env file.
+   ```bash
+   cp .env.docker.example .env
+   ```
+2. Build and start stack.
+   ```bash
+   docker compose up -d --build
+   ```
+3. Install PHP deps and generate app key.
+   ```bash
+   docker compose exec app composer install
+   docker compose exec app php artisan key:generate
+   ```
+4. Migrate and seed.
+   ```bash
+   docker compose exec app php artisan migrate --seed
+   ```
+5. Open app and Vite dev server.
+   - App: `http://localhost:8080`
+   - Vite HMR: `http://localhost:5173`
+
+### Docker helper commands
+- `make up`: build + start services
+- `make down`: stop services
+- `make logs`: stream all logs
+- `make shell`: shell in app container
+- `make migrate`: run migrations
+- `make seed`: run seeders
+- `make test`: run test suite inside app container
+
+Optional Redis profile:
+```bash
+docker compose --profile redis up -d
+```
 
 ## Local setup
 1. Copy env and set key.
